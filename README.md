@@ -23,3 +23,18 @@ Los materiales utilizados fueron:
 •	Fantoma de dedo creado en la versión 3.0
 •	Monitor General Meditech G3H 
 •	Pinza de SpO2 del monitor
+
+
+
+
+IMPLEMENTACIÓN
+
+
+Inicialmente se requiere de un espacio de trabajo adecuado, amplio con el fin de no mover el fantoma cuando se este haciendo la toma de muestras, de segunda no tiene que estar con luz artificial (luz incandecente, pantrallas de computadoras) para que esta no afecte en la medición, además de no estar cerca de ventanas donde ingrese de manera difecta la luz natural hacia el sensor.
+Luego se requiere del monitor General Meditech G3H, en el cual se verifique con un simulador que el monitor se encuentra midiendo dentro de los parámetros indicados, en este caso se verifico con un simulador MS100.
+
+Una vez con todo lo anterior presente, se tiene que introducir el fantoma en la pinza de medición, esta tiene dos partes, en la parte superir se encuentran los diodos emisores y en la interior se encuentra el fototransistor el cual permite detectar las intensidades de las luces rojas e IR. Al momento de colocar el fantoma, se tiene que colocar los diodos emisores del fantoma apuntando hacia el sensor de la pinza, es decir, coincidir la parte inferior del dedo (yema del dedo “fantoma”) con el sensor de la pinza. El fantoma de dedo en conjunto con la pinza tiene que quedar inmóvil en posición vertica, apoyado en la mesa, es decir como si uno se colocara la pinza y lo apoyara en la mesa.
+
+Con la parte física ya completa, se tiene que ir a la computadora donde se encuentra conectado el fantoma. Esta se puede controlar de 2 maneras diferentes, la primera esta pensada utilizando la comunicación serial RS-485 que tiene integrado el fantoma, donde por medio de un Arduino UNO con los códigos “S100 , S90” y sus variaciones en el tema numérico para variar el SpO2 o “B100, B60” para variar la frecuencia cardiaca. Estos valores se tienen que colocar en el monitor serial de la aplicación de Arduino IDE. 
+
+El segundo método que se puede hacer para su variación en los parámetros es mediante la modificación de manera directa en el código del fantoma, el cual se encuentra en el ESP32. En este código en las primeras líneas de código se encuentran los parámetros que uno quiere que el fantoma simule, siendo SpO2 y BPM, acá solo se tiene que cambiar los valores predeterminados por los que uno quiere simular y ver los datos en el monitor multiparámetro.
